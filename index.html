@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp - Your Local Weather Forecast</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" data-aos="fade-up">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary fs-3" href="#">
+                    <i class="fas fa-sun me-2"></i>
+                    WeatherApp
+                </a>
+                <div class="d-flex">
+                    <div class="input-group search-container">
+                        <input type="text" class="form-control" placeholder="Search Sri lanka location" id="txtsearch">
+                        <button class="btn btn-primary" type="button" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container my-5" >
+            <!-- Current Weather Section -->
+            <section class="row mb-5">
+
+                <div class="col-12" data-aos="zoom-in">
+                    <div class="card current-weather-card border-0 shadow-lg">
+                        <div class="card-body p-5 ">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="location-info mb-4">
+                                        <h2 class="location-name text-white mb-2" id="locationName">Sri Lanka
+                                        </h2>
+                                        <h2 class="location-name text-white mb-2" id="city"> Rathnapura
+                                        </h2>
+                                        <p class="current-date text-white-50 mb-0" id="date">Monday, January 15,
+                                            2025</p>
+                                    </div>
+
+                                    <div class="weather-display mb-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="temperature-section me-4">
+                                                <div class="temperature display-1 text-white fw-light" id="currentTemp">
+                                                    22°</div>
+                                                <div class="weather-condition h5 text-white-50" id="weatherCondition">
+                                                    Partly Cloudy</div>
+                                            </div>
+                                            <div class="weather-icon-large" id="weatherIcon">⛅</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row weather-details">
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="detail-item">
+                                                <small class="detail-label text-white-50">Feels like</small>
+                                                <div class="detail-value h6 text-white mb-0" id="feelsLike">25°</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="detail-item">
+                                                <small class="detail-label text-white-50">Humidity</small>
+                                                <div class="detail-value h6 text-white mb-0" id="humidity">65%</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="detail-item">
+                                                <small class="detail-label text-white-50">Wind Speed</small>
+                                                <div class="detail-value h6 text-white mb-0" id="windSpeed">12 km/h
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="detail-item">
+                                                <small class="detail-label text-white-50">UV Index</small>
+                                                <div class="detail-value h6 text-white mb-0" id="uvIndex">6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="weather-icon-display">
+                                        <div class="weather-icon-large-main" id="weatherIconMain">⛅</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- 5-Day Forecast -->
+            <section class="row mb-5" >
+                <div class="col-12">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <h3 class="card-title h5 mb-4">5-Day Forecast</h3>
+                            <div class="forecast-container" id="forecastContainer">
+                                <div class="row forecast-day align-items-center py-3 border-bottom">
+                                    <div class="col-4 col-md-3">
+                                        <div class="day-name fw-semibold">Today</div>
+                                    </div>
+                                    <div class="col-4 col-md-6 text-center">
+                                        <div class="day-icon fs-2">☀️</div>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-end">
+                                        <div class="day-temps">
+                                            <span class="high-temp fw-bold me-2">26°</span>
+                                            <span class="low-temp text-muted">18°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row forecast-day align-items-center py-3 border-bottom">
+                                    <div class="col-4 col-md-3">
+                                        <div class="day-name fw-semibold">Tomorrow</div>
+                                    </div>
+                                    <div class="col-4 col-md-6 text-center">
+                                        <div class="day-icon fs-2">⛅</div>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-end">
+                                        <div class="day-temps">
+                                            <span class="high-temp fw-bold me-2">24°</span>
+                                            <span class="low-temp text-muted">16°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row forecast-day align-items-center py-3 border-bottom">
+                                    <div class="col-4 col-md-3">
+                                        <div class="day-name fw-semibold">Wednesday</div>
+                                    </div>
+                                    <div class="col-4 col-md-6 text-center">
+                                        <div class="day-icon fs-2">🌧️</div>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-end">
+                                        <div class="day-temps">
+                                            <span class="high-temp fw-bold me-2">19°</span>
+                                            <span class="low-temp text-muted">12°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row forecast-day align-items-center py-3 border-bottom">
+                                    <div class="col-4 col-md-3">
+                                        <div class="day-name fw-semibold">Thursday</div>
+                                    </div>
+                                    <div class="col-4 col-md-6 text-center">
+                                        <div class="day-icon fs-2">🌤️</div>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-end">
+                                        <div class="day-temps">
+                                            <span class="high-temp fw-bold me-2">22°</span>
+                                            <span class="low-temp text-muted">14°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row forecast-day align-items-center py-3">
+                                    <div class="col-4 col-md-3">
+                                        <div class="day-name fw-semibold">Friday</div>
+                                    </div>
+                                    <div class="col-4 col-md-6 text-center">
+                                        <div class="day-icon fs-2">☀️</div>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-end">
+                                        <div class="day-temps">
+                                            <span class="high-temp fw-bold me-2">25°</span>
+                                            <span class="low-temp text-muted">17°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        
+            <section class="row"   data-aos="fade-down">
+                <div class="col-12">
+                    <div class="row g-4">
+                        <div class="col-6 col-md-3">
+                            <div class="card info-card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="card-icon text-warning fs-1 mb-3">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <h6 class="card-title text-muted mb-2">Sunrise</h6>
+                                    <div class="card-value h5 mb-0" id="sunrise">6:42 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card info-card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="card-icon text-orange fs-1 mb-3">
+                                        <i class="fas fa-moon"></i>
+                                    </div>
+                                    <h6 class="card-title text-muted mb-2">Sunset</h6>
+                                    <div class="card-value h5 mb-0" id="sunset">7:18 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card info-card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="card-icon text-info fs-1 mb-3">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <h6 class="card-title text-muted mb-2">Visibility</h6>
+                                    <div class="card-value h5 mb-0" id="visibility">10 km</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card info-card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="card-icon text-secondary fs-1 mb-3">
+                                        <i class="fas fa-thermometer-half"></i>
+                                    </div>
+                                    <h6 class="card-title text-muted mb-2">Pressure</h6>
+                                    <div class="card-value h5 mb-0" id="pressure">1013 mb</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-light py-4 mt-5">
+            <div class="container text-center">
+                <p class="text-muted mb-0">&copy; 2025 WeatherApp.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script src="app.js"></script>
+   
+
+</body>
+
+</html>
